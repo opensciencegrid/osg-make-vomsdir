@@ -1,8 +1,8 @@
 #!/usr/bin/env perl
 
-=head1 vdt-make-vomsdir
+=head1 osg-make-vomsdir
 
-vdt-make-vomsdir - Make the set of LSC files neede to verify VOMS servers
+osg-make-vomsdir - Make the set of LSC files neede to verify VOMS servers
 
 =head2 Synopsis
 
@@ -64,7 +64,7 @@ use English;
 # Global Variables
 #
 #-----------------------------------------
-my $version = "1.0";
+my $version = "1.0.0";
 my $restrict_to_vo = "";
 my $restrict_to_host = "";
 my $voms_dir = "";
@@ -128,7 +128,7 @@ sub parse_command_line
 #-----------------------------------------
 sub usage
 {
-    print "Usage: vdt-make-vomsdir [-vo VO] [-host HOST] [--vomsdir DIR] [--vomses FILE] [--help]\n";
+    print "Usage: osg-make-vomsdir [-vo VO] [-host HOST] [--vomsdir DIR] [--vomses FILE] [--help]\n";
     print "\n";
     print "Purpose: Generate the LSC files for a set of VOs. The files will be placed into the\n";
     print "standard 'vomsdir' hierarchy.\n";
@@ -229,7 +229,7 @@ sub find_cert_and_key
 #-----------------------------------------
 sub print_startup_info
 {
-    print "vdt-make-vomsdir version $version\n";
+    print "osg-make-vomsdir version $version\n";
     print "Will make $voms_dir:\n";
     print "     ...using CAs in $cert_dir\n";
     print "     ...finding VOMS servers from $vomses_file\n";
