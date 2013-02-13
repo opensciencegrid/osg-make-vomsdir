@@ -276,7 +276,7 @@ sub make_vomsdir
             # Note that we use the DN we get from openssl instead of the DN we
             # could get out of the vomses file, to make sure it's right. (In one
             # case, I found it was right from VOMS-Admin, but not VOMS.)
-            my ($success, $actual_dn, $ca) = find_dn_ca($server, $vo);
+            my ($success, $actual_dn, $ca) = find_dn_ca($server, $port, $vo);
             if ($success) {
                 print "Done\n";
                 system("mkdir -p vomsdir/$vo");
@@ -306,7 +306,8 @@ sub make_vomsdir
 sub find_dn_ca
 {
     my $server = $_[0];
-    my $vo     = $_[1];
+    my $port   = $_[1];
+    my $vo     = $_[2];
     my @outputs;
     my $dn = "";
     my $ca = "";
@@ -326,7 +327,7 @@ sub find_dn_ca
     eval {
         local $SIG{ALRM} = sub { die "alarm\n" };
         alarm 10;
-        @outputs = `openssl s_client -connect $server:8443 -prexit -CApath $cert_dir $certarg $keyarg < /dev/null 2>&1`;
+        @outputs = `openssl s_client -connect $server:$port -prexit -CApath $cert_dir $certarg $keyarg < /dev/null 2>&1`;
         if ($? != 0) {
             $cant_contact_voms = 1;
         }
