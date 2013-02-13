@@ -279,8 +279,8 @@ sub make_vomsdir
             my ($success, $actual_dn, $ca) = find_dn_ca($server, $port, $vo);
             if ($success) {
                 print "Done\n";
-                system("mkdir -p vomsdir/$vo");
-                my $filename = "vomsdir/$vo/$server.lsc";
+                system("mkdir", "-p", "$voms_dir/$vo");
+                my $filename = "$voms_dir/$vo/$server.lsc";
                 my $lsc_fh = FileHandle->new($filename, "w+");
                 if (!defined($lsc_fh)) {
                     die "Can't write $filename\n";
