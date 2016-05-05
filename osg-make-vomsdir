@@ -2,7 +2,7 @@
 
 =head1 osg-make-vomsdir
 
-osg-make-vomsdir - Make the set of LSC files neede to verify VOMS servers
+osg-make-vomsdir - Make the set of LSC files needed to verify VOMS servers
 
 =head2 Synopsis
 
